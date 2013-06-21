@@ -9,7 +9,7 @@ main(int argc, char **argv)
 	for (i = 0; i < 10; i++) {
 		msqid = Msgget(IPC_PRIVATE, SVMSG_MODE | IPC_CREAT);
 		Msgctl(msqid, IPC_STAT, &info);
-		printf("msqid = %d, seq = %lu\n", msqid, info.msg_perm.seq);
+		printf("msqid = %d, seq = %lu\n", msqid, info.msg_perm.__seq);
 
 		Msgctl(msqid, IPC_RMID, NULL);
 	}
