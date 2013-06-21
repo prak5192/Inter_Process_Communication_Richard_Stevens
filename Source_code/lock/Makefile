@@ -1,7 +1,7 @@
 include ../Make.defines
 
 PROGS =	locknone lockfcntl lockopen locknoneubuf lockpxsem locksvsem \
-		locklink lockopen2 locksvsemrace1 locksvsemrace2 \
+		locklink lockopen2 locksvsemrace1 \
 		loopnone loopfcntl loopopen loopnonenonb looppxsem loopsvsem \
 		loopfcntlnonb onedaemon \
 		test1 test2 test3 test4
@@ -31,9 +31,6 @@ locksvsem:	lockmain.o locksvsem.o
 
 locksvsemrace1:	locksvsemrace1.o
 		${CC} ${CFLAGS} -o $@ locksvsemrace1.o ${LIBS}
-
-locksvsemrace2:	locksvsemrace2.o
-		${CC} ${CFLAGS} -o $@ locksvsemrace2.o ${LIBS}
 
 locklink:	lockmain.o locklink.o
 		${CC} ${CFLAGS} -o $@ lockmain.o locklink.o ${LIBS}
