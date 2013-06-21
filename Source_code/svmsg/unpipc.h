@@ -49,7 +49,8 @@
 # include	<sys/ipc.h>		/* System V IPC */
 #endif
 
-#ifdef	HAVE_SYS_MSG_H
+//#ifdef	HAVE_SYS_MSG_H
+#if 1
 # include	<sys/msg.h>		/* System V message queues */
 #endif
 
@@ -107,7 +108,7 @@ union semun {				/* define union for semctl() */
 #ifdef	HAVE_DOOR_H
 # include	<door.h>		/* Solaris doors API */
 #endif
-
+#define __PRAKASH_TEST__
 #ifdef	HAVE_RPC_RPC_H
 #ifdef _PSX4_NSPACE_H_TS	/* Digital Unix 4.0b hack, hack, hack */
 #undef	SUCCESS
@@ -150,6 +151,8 @@ union semun {				/* define union for semctl() */
 					/* default permissions for new directories */
 /* $$.ix [DIR_MODE]~constant,~definition~of$$ */
 
+#define MSG_R 0X0400
+#define MSG_W 0X0020
 #define	SVMSG_MODE	(MSG_R | MSG_W | MSG_R>>3 | MSG_R>>6)
 					/* default permissions for new SV message queues */
 /* $$.ix [SVMSG_MODE]~constant,~definition~of$$ */
@@ -174,6 +177,8 @@ struct timespec {
   time_t	tv_sec;		/* seconds */
   long		tv_nsec;	/* and nanoseconds */
 };
+
+    
 /* $$.It timespec$$ */
 /* $$.Ib tv_sec$$ */
 /* $$.Ib tv_nsec$$ */
@@ -189,6 +194,10 @@ struct timespec {
  * following hack.  Other systems in addition to BSD/OS might have this
  * problem too ...
  */
+struct msgbuf {
+    unsigned long int mtype;
+    char mtext[1024];
+};
 
 #ifdef	__bsdi__
 #define	va_mode_t	int
