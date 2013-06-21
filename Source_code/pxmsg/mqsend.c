@@ -6,7 +6,7 @@ main(int argc, char **argv)
 	mqd_t	mqd;
 	void	*ptr;
 	size_t	len;
-	uint_t	prio;
+	unsigned int	prio;
 
 	if (argc != 4)
 		err_quit("usage: mqsend <name> <#bytes> <priority>");
