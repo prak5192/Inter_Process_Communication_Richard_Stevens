@@ -1,4 +1,7 @@
 #include	"unpipc.h"
+#include <sys/types.h>
+#include <sys/ipc.h>
+#include <sys/msg.h>
 
 int
 main(int argc, char **argv)
@@ -15,10 +18,14 @@ main(int argc, char **argv)
 
 	Msgctl(msqid, IPC_STAT, &info);
 	printf("read-write: %03o, cbytes = %lu, qnum = %lu, qbytes = %lu\n",
-		   info.msg_perm.mode & 0777, (ulong_t) info.msg_cbytes,
-		   (ulong_t) info.msg_qnum, (ulong_t) info.msg_qbytes);
+		   info.msg_perm.mode & 0777, (unsigned long int) info.msg_cbytes,
+		   (unsigned long int ) info.msg_qnum, (unsigned long int) info.msg_qbytes);
 
-	system("ipcs -q");
+	int ret = system("ipcs -q");
+    if( ret == -1){
+        perror("system\n");
+        printf("Error in system call\n");
+    }
 
 	Msgctl(msqid, IPC_RMID, NULL);
 	exit(0);
