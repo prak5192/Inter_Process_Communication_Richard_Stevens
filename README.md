@@ -1,3 +1,10 @@
+Link:
+=======
+ http://www.kohala.com/start/unpv22e/unpv22e.html
+
+=======
+
+
 Inter_Process_Communication_Richard_Stevens
 ===========================================
 During compilatio I got the following error:
@@ -25,6 +32,8 @@ Comment the following lines in /usr/include/stdint.h file
 typedef unsigned char     uint8_t; Line 49
 typedef unsigned short int    uint16_t; Line 50
 typedef unsigned int      uint32_t; Line 52
+
+
 
 
 
