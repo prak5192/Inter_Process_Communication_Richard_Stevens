@@ -151,9 +151,9 @@ union semun {				/* define union for semctl() */
 					/* default permissions for new directories */
 /* $$.ix [DIR_MODE]~constant,~definition~of$$ */
 
-#define MSG_R 0X0400
-#define MSG_W 0X0020
-#define	SVMSG_MODE	(MSG_R | MSG_W | MSG_R>>3 | MSG_R>>6)
+#define MSG_R O_RDONLY
+#define MSG_W O_WRONLY
+#define	SVMSG_MODE	(0666)
 					/* default permissions for new SV message queues */
 /* $$.ix [SVMSG_MODE]~constant,~definition~of$$ */
 #define SEM_R 0X0400
