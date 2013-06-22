@@ -156,6 +156,9 @@ union semun {				/* define union for semctl() */
 #define	SVMSG_MODE	(MSG_R | MSG_W | MSG_R>>3 | MSG_R>>6)
 					/* default permissions for new SV message queues */
 /* $$.ix [SVMSG_MODE]~constant,~definition~of$$ */
+#define SEM_R 0X0400
+#define SEM_W 0X0020
+#define SEM_A 0X0002
 #define	SVSEM_MODE	(SEM_R | SEM_A | SEM_R>>3 | SEM_R>>6)
 					/* default permissions for new SV semaphores */
 /* $$.ix [SVSEM_MODE]~constant,~definition~of$$ */
@@ -195,8 +198,8 @@ struct timespec {
  * problem too ...
  */
 struct msgbuf {
-    unsigned long int mtype;
-    char mtext[1024];
+    long int mtype;
+    char mtext[BUFFSIZE];
 };
 
 #ifdef	__bsdi__
